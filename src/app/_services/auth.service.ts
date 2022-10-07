@@ -16,16 +16,38 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
-      username,
+      username: name,
       password
     }, httpOptions);
   }
+  register(name: string, email: string, password: string, phone: number, street: string, number: number, intNumber: number, postalCode: number): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', {
+      name,
+      email,
+      password,
+      phone,
+      street,
+      number,
+      intNumber,
+      postalCode
+    }, httpOptions);
+  }
+  registerveto(name: string, email: string, password: string, ): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', {
+      name,
+      email,
+      password
 
-  register(username: string, email: string, password: string): Observable<any> {
+    }, httpOptions);
+  }
+  registerAdmin(username: string, email: string, password: string, ): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username,
       email,
       password
+
     }, httpOptions);
   }
+
+
 }

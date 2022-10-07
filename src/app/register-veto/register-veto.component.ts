@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import {AuthService} from "../_services/auth.service";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-register-veto',
+  templateUrl: './register-veto.component.html',
+  styleUrls: ['./register-veto.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterVetoComponent implements OnInit{
   form: any = {
     username: null,
     email: null,
-    password: null,
-
+    password: null
   };
   isSuccessful = false;
   isSignUpFailed = false;
@@ -23,9 +22,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password, } = this.form;
+    const { username, email, password } = this.form;
 
-    this.authService.registerAdmin(username, email, password).subscribe({
+    this.authService.registerveto(username, email, password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
