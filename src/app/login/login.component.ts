@@ -1,28 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {Router} from "@angular/router";
+import { AuthService } from '../_services/auth.service';
+import { TokenStorageService } from '../_services/token-storage.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent  implements OnInit {
-  form: FormGroup;                    // {1}
-  constructor(private router: Router) { }
+export class LoginComponent implements OnInit {
+  form: any = {
+    username: null,
+    password: null
+  };
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  username: string;
-  password: string;
-  showSpinner: any;
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
-  ngOnInit() {
-  }
-
-  login() : void {
-    if(this.username == 'admin' && this.password == 'admin'){
-      this.router.navigate(["user"]);
-    }else {
-      alert("Invalid credentials");
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
     }
   }
-}
 
+  onSubmit(): void {
+    const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    });
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+}

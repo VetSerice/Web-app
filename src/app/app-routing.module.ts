@@ -1,27 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { DoctorsComponent } from './vetos/doctors.component';
-import { PatientsComponent } from './patients/patients.component';
-import { PreferenceComponent } from './preference/preference.component';
-import { AboutComponent } from './about/about.component';
-import { DoctorDetailsComponent } from './Veto-details/doctor-details.component';
-import { LoginComponent } from './login/login.component';
+import { RouterModule, Routes } from '@angular/router';
+
 import { RegisterComponent } from './register/register.component';
-import { VetoSeviceComponent } from './veto-sevice/veto-sevice.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 const routes: Routes = [
-  { path: '', component: VetoSeviceComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'calendar', component: CalendarComponent },
-  { path: 'doctors', component: DoctorsComponent },
-  { path: 'doctor-details/:id', component: DoctorDetailsComponent },
-  { path: 'patients', component: PatientsComponent },
-  { path: 'preference', component: PreferenceComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
