@@ -24,7 +24,7 @@ export class RegisterVetoComponent implements OnInit{
   onSubmit(): void {
     const { username, email, password } = this.form;
 
-    this.authService.registerveto(username, email, password).subscribe({
+    this.authService.register(username, email, password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;

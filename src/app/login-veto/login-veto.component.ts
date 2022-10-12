@@ -20,7 +20,7 @@ export class LoginVetoComponent implements OnInit{
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
+    if (this.authService.getUserToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
