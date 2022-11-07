@@ -1,0 +1,64 @@
+<div class="new-doctor-container" style="display:none">
+  <ejs-dialog #newDoctorObj width='390px' cssClass='new-doctor-dialog' [isModal]='true' [visible]='false'
+    [animationSettings]='animationSettings' [header]='title' [showCloseIcon]='true' target='body'
+    (beforeOpen)='onBeforeOpen($event)'>
+    <ng-template #content>
+      <form id='new-doctor-form'>
+        <div class="name-container">
+          <ejs-textbox [(ngModel)]="name"  id='Name' name='Name' cssClass='doctor-name e-field' placeholder='Veto Name'
+            floatLabelType='Always'>
+
+          </ejs-textbox>
+        </div>
+        <div class="email-container">
+          <ejs-textbox id='email'[(ngModel)]="email" name='Email' cssClass='e-field' placeholder='Email' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+        <div class="password-container">
+          <ejs-textbox id='password' [(ngModel)]="password" [hidden]="title=='Edit Doctor'" name='Password' cssClass='e-field' placeholder='Mot De passe' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+        <div class="phone-container">
+          <ejs-textbox id='phone' name='Mobile' [(ngModel)]="phone" cssClass='e-field' placeholder='Numero de Téléphone' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+
+        <div class="stree-container">
+          <ejs-textbox id='street' name='street' [(ngModel)]="street" cssClass='e-field' placeholder='Nom de la rue ' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+        <div class="number-container">
+          <ejs-textbox id='intNumber' name='intNumber' [(ngModel)]="intNumber" cssClass='e-field' placeholder=' Code pays' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+        <div class="number-container">
+          <ejs-textbox id='number' name='number' [(ngModel)]="number" cssClass='e-field' placeholder='N° de rue ' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+        <div class="postalCode-container">
+          <ejs-textbox id='postalCode' name='number' [(ngModel)]="postalCode" cssClass='e-field' placeholder='Code Postale' floatLabelType='Always'>
+          </ejs-textbox>
+        </div>
+        <div class="Specialization">
+          <ejs-dropdownlist id='Specialization' name='Specialization' cssClass='e-field' width='290px' placeholder='Specialization' index=0 floatLabelType='Always' [dataSource]='Specialization' [(value)]='valueSpecialization'>
+          </ejs-dropdownlist>
+        </div>
+        <div class="experience">
+
+            <ejs-textbox id='Education' name='Education' cssClass='e-field' width='180px' placeholder='Education' [(ngModel)]="Education"floatLabelType='Always'></ejs-textbox>
+
+          <ejs-dropdownlist id='Experience' name='Experience' cssClass='e-field' width='160px' placeholder='Experience' index=0 floatLabelType='Always' [dataSource]='Experience' [(value)]='valueExperience' >
+          </ejs-dropdownlist>
+        </div>
+
+      </form>
+
+    </ng-template>
+    <ng-template #footerTemplate>
+      <div class="button-container">
+        <button ejs-button cssClass="e-normal" (click)='onCancelClick()'>Cancel</button>
+        <button ejs-button cssClass="e-normal" [isPrimary]="true" (click)='onSaveClick()'>Save</button>
+      </div>
+    </ng-template>
+  </ejs-dialog>
+</div>
