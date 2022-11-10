@@ -5,7 +5,7 @@ import {
 } from './datasource';
 import { EventFieldsMapping } from '@syncfusion/ej2-schedule';
 import { CalendarSettings } from './calendar-settings';
-import { FormValidator, FormValidatorModel } from '@syncfusion/ej2-angular-inputs';
+import { FormValidatorModel} from '@syncfusion/ej2-angular-inputs';
 import { createElement, remove, removeClass } from '@syncfusion/ej2-base';
 
 @Injectable({
@@ -137,7 +137,6 @@ export class DataService {
         this.validationComplete(args, parentElement);
       }
     };
-    const obj: FormValidator = new FormValidator(formElement, model);
   }
 
   public validationComplete(args: Record<string, any>, parentElement: HTMLElement): void {

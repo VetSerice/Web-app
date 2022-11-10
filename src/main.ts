@@ -7,7 +7,7 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
-registerLicense('ORg4AjUWIQA/Gnt2VVhiQlFacldJXGJWd0x0RWFbb19xfldEal5YVAciSV9jS3xSdkdlWHhbcXRXQWlYUA==');
+registerLicense('ORg4AjUWIQA/Gnt2VVhjQlFac1lJXGFWd0x0RWFbb1Z6dFBMYF9BJAtUQF1hS39SdkxhWX5adXRWTmBV');
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
